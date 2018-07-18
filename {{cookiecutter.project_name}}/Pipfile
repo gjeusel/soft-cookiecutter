@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+["requires"]
+python_version = "3.6"
+
+[packages]
+pbr = ">=3.0"
+PyYAML = "*"
+
+[dev-packages]
+flake8 = "*"
+black = "*"
+isort = "*"
+
+pytest = "*"
+pytest-cov = "*"
+pipenv-to-requirements = "*"
+
+sphinx = ">=1.7.2"
+sphinx-rtd-theme = "*"
+sphinxcontrib-napoleon = "*"
+ipython = "*"
+pygments = "*"
+nbsphinx = "*"
