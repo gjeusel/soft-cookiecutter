@@ -9,7 +9,7 @@ Welcome to {{ cookiecutter.project_name }}'s documentation!
    :maxdepth: 2
    :caption: Notes
 
-   notes/*
+   quickstart <notes/quickstart>
 
 
 .. toctree::

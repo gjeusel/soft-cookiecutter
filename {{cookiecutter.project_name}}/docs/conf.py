@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 import sphinx_rtd_theme
 
@@ -9,17 +10,17 @@ import sphinx_rtd_theme
 # needs_sphinx = '1.0'
 
 extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.coverage',
-    'sphinx.ext.doctest',
-    'sphinx.ext.extlinks',
-    'sphinx.ext.ifconfig',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.todo',
-    'sphinx.ext.viewcode',
-    'IPython.sphinxext.ipython_console_highlighting',
-    'IPython.sphinxext.ipython_directive',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.coverage",
+    "sphinx.ext.doctest",
+    "sphinx.ext.extlinks",
+    "sphinx.ext.ifconfig",
+    "sphinx.ext.napoleon",
+    "sphinx.ext.todo",
+    "sphinx.ext.viewcode",
+    "IPython.sphinxext.ipython_console_highlighting",
+    "IPython.sphinxext.ipython_directive",
 ]
 
 napoleon_use_ivar = True
@@ -28,40 +29,32 @@ napoleon_use_param = False
 
 # Embed Ipython configuration:
 ipython_mplbackend = ""
-ipython_execlines = ['import datetime',
-                     'import pandas',
-                     'import pandas as pd',
-                     'pandas.options.display.max_rows = 10',
-                     'import logging',
-                     # 'import sys',
-                     # 'sys.path.append("tests")',
-                     'logger = logging.getLogger()',
-                     # 'logger.setLevel(logging.DEBUG)',
-                     'import requests_cache',
-                     'requests_cache.install_cache()',
-                     ]
+
+# Execute ipython_startup_file before each ipython embed
+ipython_startup_file = Path(__file__).parent / "ipython_init.py"
+ipython_execlines = ["%run {}".format(ipython_startup_file.as_posix())]
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['.']
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
-if os.getenv('SPELLCHECK'):
-    extensions += 'sphinxcontrib.spelling',
+if os.getenv("SPELLCHECK"):
+    extensions += ("sphinxcontrib.spelling",)
     spelling_show_suggestions = True
-    spelling_lang = 'en_US'
+    spelling_lang = "en_US"
 
 # The suffix(es) of source filenames.
-source_suffix = '.rst'
+source_suffix = ".rst"
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = "index"
 
 # General information about the project.
-project = u'{{ cookiecutter.project_name }}'
+project = u"{{ cookiecutter.project_name }}"
 author = "GEM"
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
@@ -82,28 +75,28 @@ extlinks = {
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx_rtd_theme'
+html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    'collapse_navigation': False,
-    'display_version': True,
-    'logo_only': True,
+    "collapse_navigation": False,
+    "display_version": True,
+    "logo_only": True,
 }
 
-html_logo = '_static/img/logo.svg'
+html_logo = "_static/img/logo.svg"
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ["_static"]
 
 html_context = {
-    'css_files': [
-        'https://fonts.googleapis.com/css?family=Lato',
-        '_static/css/theme.css'
-    ],
+    "css_files": [
+        "https://fonts.googleapis.com/css?family=Lato",
+        "_static/css/theme.css",
+    ]
 }
