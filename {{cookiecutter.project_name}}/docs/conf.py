@@ -97,6 +97,6 @@ html_static_path = ["_static"]
 html_context = {
     "css_files": [
         "https://fonts.googleapis.com/css?family=Lato",
-        "_static/css/theme.css",
+        "_static/css/custom_theme.css",
     ]
 }
