@@ -36,6 +36,12 @@ h1, h2, .rst-content .toctree-wrapper p.caption, h3, h4, h5, h6, legend, p.capti
     display: block;
 }
 
+/*Resize logo to be max size acceptable*/
+img.logo {
+    max-width: 8em;
+    max-height: 8em;
+}
+
 /* This ensures that multiple constructors will remain in separate lines. */
 .rst-content dl:not(.docutils) dt {
     display: table;
