@@ -28,18 +28,10 @@ napoleon_use_param = False
 
 # Embed Ipython configuration:
 ipython_mplbackend = ""
-ipython_execlines = ['import datetime',
-                     'import pandas',
-                     'import pandas as pd',
-                     'pandas.options.display.max_rows = 10',
-                     'import logging',
-                     # 'import sys',
-                     # 'sys.path.append("tests")',
-                     'logger = logging.getLogger()',
-                     # 'logger.setLevel(logging.DEBUG)',
-                     'import requests_cache',
-                     'requests_cache.install_cache()',
-                     ]
+
+# Startup init file
+ipython_startup_file = Path(__file__).parent / "ipython_init.py"
+ipython_execlines ['%run {}'.format(ipython_startup_file.as_posix()),]
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['.']
