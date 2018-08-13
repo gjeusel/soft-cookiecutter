@@ -23,9 +23,9 @@ if __name__ == '__main__':
     # Git add all & commit
     msg_commit = "First commit thx to cookiecutter."
 
-    subprocess.Popen(["git", "init", "."], cwd=PROJECT_DIRECTORY)
-    subprocess.Popen(["git", "add", PROJECT_DIRECTORY + "/.*"], cwd=PROJECT_DIRECTORY)
-    subprocess.Popen(["git", "commit", "-m", msg_commit], cwd=PROJECT_DIRECTORY)
+    subprocess.call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
+    subprocess.call(["git", "add", "."], cwd=PROJECT_DIRECTORY)
+    subprocess.call(["git", "commit", "-m", msg_commit], cwd=PROJECT_DIRECTORY)
 
     if '{{ cookiecutter.env_workflow }}' == 'pipenv':
         print("Setting up a virtual environment")
