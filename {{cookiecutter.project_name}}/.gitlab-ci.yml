@@ -59,7 +59,7 @@ pytest:
     tags:  # will search for a gitlab-runner with at least those tags
         - docker  # ask for docker hub availability
     script:
-        - py.test --cov=src tests
+        - py.test tests
 
 build_doc:
     stage: build-doc
