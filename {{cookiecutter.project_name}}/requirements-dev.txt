@@ -6,5 +6,6 @@ isort
 
 pytest
 pytest-cov
+coverage
 
 -r docs/requirements.txt
