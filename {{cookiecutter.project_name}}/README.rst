@@ -17,7 +17,7 @@
 {{ cookiecutter.project_short_description }}
 
 :License: {{ cookiecutter.open_source_license }}
-:Documentation: http://{{ cookiecutter.project_name }}.readthedocs/en/latest
+:Documentation: http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest
 :Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
 
 
