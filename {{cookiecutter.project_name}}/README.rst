@@ -1,7 +1,3 @@
-===============================
-{{ cookiecutter.project_name }}
-===============================
-
 .. image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.svg?branch=master
   :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
 .. image:: https://readthedocs.org/projects/{{ cookiecutter.project_name }}/badge/?version=latest
@@ -14,11 +10,12 @@
   :alt: Pypi package
 
 
-{{ cookiecutter.project_short_description }}
+===============================
+{{ cookiecutter.project_name }}
+===============================
 
-:License: {{ cookiecutter.open_source_license }}
-:Documentation: http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest
-:Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+
+{{ cookiecutter.project_short_description }}
 
 
 Installation
@@ -27,3 +24,8 @@ Installation
 .. code:: bash
 
     pip install {{ cookiecutter.project_name }}
+
+
+:License: {{ cookiecutter.open_source_license }}
+:Documentation: http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest
+:Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
