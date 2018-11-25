@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.svg?branch=master
-  :target: https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+.. image:: https://travis-ci.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.svg?branch=master
+  :target: https://travis-ci.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
 .. image:: https://readthedocs.org/projects/{{ cookiecutter.project_name }}/badge/?version=latest
   :target: http://{{ cookiecutter.project_name }}.readthedocs.io/en/latest/?badge=latest
   :alt: Documentation Status
