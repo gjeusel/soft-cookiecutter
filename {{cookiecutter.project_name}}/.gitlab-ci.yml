@@ -7,12 +7,15 @@ variables:
     # URL for doc upload
     DOC_UPLOAD: "http://something.com"
 
-# Pip's cache doesn't store the python packages https://pip.pypa.io/en/stable/reference/pip_install/#caching
-# If you want to also cache the installed packages, you have to install them in a virtualenv and cache it as well.
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+# If you want to also cache the installed packages,
+# you have to install them in a virtualenv and cache it as well.
 cache:
   paths:
     - .cache/
     - venv/
+  key: "$CI_PROJECT_ID"
 
 before_script:
     # Verbosity:
@@ -24,17 +27,10 @@ before_script:
     #- echo "$SSH_CONFIG" >> ~/.ssh/config  # quote need so that pass variable with newlines
     ## auto confirm RSA key fingerprint:
     #- echo "StrictHostKeyChecking no" | cat - ~/.ssh/config > temp && mv temp ~/.ssh/config
-    #- echo "$SSH_PRIVATE_KEY" > ~/.ssh/gitlabgem
+    #- echo "$SSH_PRIVATE_KEY" > ~/.ssh/myprivatekey
     #- cat ~/.ssh/config
-    #- tail ~/.ssh/gitlabgem
-    #- chmod 600 ~/.ssh/gitlabgem
-    #- eval $(ssh-agent -s) && ssh-add ~/.ssh/gitlabgem
-
-    # Uncomment this if you want to try the SSH config:
-    #- ssh -T git@git.gem.myengie.com
-
-    ## Package config file:
-    #- echo "$CFG_FILE" > cfg.yaml
+    #- chmod 600 ~/.ssh/myprivatekey
+    #- eval $(ssh-agent -s) && ssh-add ~/.ssh/myprivatekey
 
     ## Pip config:
     #- mkdir -p ~/.pip
@@ -47,7 +43,7 @@ before_script:
     - source venv/bin/activate
 
     - pip install -r requirements-dev.txt
-    - pip install --process-dependency-links --editable .
+    - pip install --editable .
 
 stages:
     - test
@@ -56,15 +52,17 @@ stages:
 
 pytest:
     stage: test
-    tags:  # will search for a gitlab-runner with at least those tags
-        - docker  # ask for docker hub availability
     script:
-        - py.test tests
+        - py.test --cov {{ cookiecutter.project_slug }} --cov-report term-missing --tb=native -n 13
+
+linter:
+    stage: test
+    script:
+        - pip install pre-commit
+        - pre-commit run --all-files
 
 build_doc:
     stage: build-doc
-    tags:  # will search for a gitlab-runner with at least those tags
-        - docker  # ask for docker hub availability
     script:
         - python setup.py build_sphinx
     artifacts:

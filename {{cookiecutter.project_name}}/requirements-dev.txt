@@ -6,6 +6,7 @@ isort
 
 pytest
 pytest-cov
+pytest-xdist
 codecov
 
 -r docs/requirements.txt
