@@ -1,5 +1,7 @@
 -r requirements.txt
+-r docs/requirements.txt
 
+pre-commit
 flake8
 black
 isort
@@ -8,5 +10,3 @@ pytest
 pytest-cov
 pytest-xdist
 codecov
-
--r docs/requirements.txt

@@ -16,7 +16,7 @@ Welcome to {{ cookiecutter.project_name }}'s documentation!
    :maxdepth: 2
    :caption: Package Reference
 
-   {{ cookiecutter.project_slug }}.cli <src/cli>
+   {{ cookiecutter.project_slug }}.__init__ <src/__init__>
 
 
 .. toctree::
