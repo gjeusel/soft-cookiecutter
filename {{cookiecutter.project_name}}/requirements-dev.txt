@@ -6,7 +6,7 @@ flake8
 yapf
 isort
 
-pytest
+pytest >= 4.5.0
 pytest-cov
 pytest-xdist
 codecov
