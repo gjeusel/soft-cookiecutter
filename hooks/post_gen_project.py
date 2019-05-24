@@ -16,7 +16,7 @@ if __name__ == '__main__':
         remove_file('requirements.txt')
         remove_file('requirements-dev.txt')
         remove_file('docs/requirements.txt')
-    elif '{{ cookiecutter.env_workflow }}' == 'conda':
+    elif '{{ cookiecutter.env_workflow }}' == 'standard':
         remove_file('Pipfile')
 
     print("Creating first commit (needed for PBR to fully work)")

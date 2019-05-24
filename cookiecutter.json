@@ -5,5 +5,5 @@
   "project_short_description": "Fabulous Project.",
   "open_source_license": ["MIT license", "BSD license"],
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "env_workflow": ["conda", "pipenv"]
+  "env_workflow": ["standard", "pipenv"]
 }

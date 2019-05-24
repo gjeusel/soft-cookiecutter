@@ -7,7 +7,7 @@
 Only a few questions, only a few tools, but everything you need for packaging in python.
 See [cookiecutter](https://github.com/audreyr/cookiecutter) for me informations.
 
-- *Pipenv* or *Conda*
+- *Standard* or *Pipenv*
 - *PBR - Python Build Reasonableness*
 - *Travis-CI*: build, unit test
 - *Sphinx docs*: Documentation ready for generation and publication to *ReadTheDoc*

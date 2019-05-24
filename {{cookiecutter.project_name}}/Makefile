@@ -58,7 +58,7 @@ doc:
 
 publish:
 	pipenv run twine upload --repository-url https://upload.pypi.org/legacy/ dist/
-{% elif cookiecutter.env_workflow == 'conda' %}
+{% elif cookiecutter.env_workflow == 'standard' %}
 all: dev style sdists doc test-unit test-coverage
 
 dev: python setup.py develop
