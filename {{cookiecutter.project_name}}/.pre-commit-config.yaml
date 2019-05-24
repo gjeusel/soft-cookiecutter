@@ -42,7 +42,7 @@ repos:
     - id: yapf
       args: [-i, -r]
       language: python
-      language_version: python3
+      language_version: python3.6
 
   #- repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
   #  sha: "v1.0.3"
