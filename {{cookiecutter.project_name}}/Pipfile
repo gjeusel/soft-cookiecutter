@@ -11,7 +11,7 @@ PyYAML = "*"
 
 [dev-packages]
 flake8 = "*"
-black = "*"
+yapf = "*"
 isort = "*"
 
 pytest = "*"

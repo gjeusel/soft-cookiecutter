@@ -3,7 +3,7 @@
 
 pre-commit
 flake8
-black
+yapf
 isort
 
 pytest

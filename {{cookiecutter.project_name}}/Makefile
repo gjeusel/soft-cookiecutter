@@ -19,8 +19,11 @@ style: isort black
 isort:
 	pipenv run isort -y
 
-black:
-	pipenv run black $(MODULE)
+#black:
+#  pipenv run black $(MODULE)
+
+yapf:
+	pipenv run yapf $(MODULE)
 
 checks:
 	pipenv check
@@ -60,13 +63,16 @@ all: dev style sdists doc test-unit test-coverage
 
 dev: python setup.py develop
 
-style: isort black
+style: isort yapf
 
 isort:
 	isort -y
 
-black:
-	black $(MODULE)
+#black:
+#  black $(MODULE)
+
+yapf:
+	yapf $(MODULE)
 
 flake8:
 	python setup.py flake8
