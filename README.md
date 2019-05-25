@@ -5,15 +5,19 @@
 ## Soft-cookiecutter template
 
 Only a few questions, only a few tools, but everything you need for packaging in python.
+
 See [cookiecutter](https://github.com/audreyr/cookiecutter) for me informations.
 
 - *Standard* or *Pipenv*
 - *PBR - Python Build Reasonableness*
-- *Travis-CI*: build, unit test
+- *Travis-CI*: 2 stages: linter + pytest
+- *Coverage*: unit test report
 - *Sphinx docs*: Documentation ready for generation and publication to *ReadTheDoc*
 
-- *Pytest*: unit testing
-- *isort, black*: code formatting | *Flake8*: code style | *Coverage*: unit test report
+*Linter*: [pre-commit](https://github.com/pre-commit/pre-commit)
+> [flake8](https://github.com/PyCQA/flake8)
+> [isort](https://github.com/timothycrosley/isort)
+> [yapf](https://github.com/google/yapf)
 
 
 ## Usage
