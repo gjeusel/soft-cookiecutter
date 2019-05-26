@@ -3,29 +3,31 @@ python:
   - 3.6
 
 install:
-    - pip install -r requirements-dev.txt
-    - pip install .
+  - pip install -r requirements-dev.txt
+  - pip install .
 
 jobs:
   include:
     - stage: test
+      name: "Tests"
       script: pytest --cov-report=term-missing --cov={{ cookiecutter.project_name }}
+
     - stage: linter
+      name: "Linter"
       script: pre-commit run --all-files --show-diff-on-failure
 
 after_success:
   - codecov
 
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
+# Let travis-ci CLI tool encrypt your password for PyPI deployment:
+# > gem install travis
+# > travis encrypt --add deploy.password --com
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   user: {{ cookiecutter.pypi_username }}
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: "REPLACE ME USING CMDLINE"
   on:
     tags: true
     repo: {{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
