@@ -30,18 +30,16 @@ jobs:
       name: "Linter"
       script: pre-commit run --all-files --show-diff-on-failure
 
-    # Let travis-ci CLI tool encrypt your password for PyPI deployment:
-    # > gem install travis
-    # > travis encrypt --add deploy.password --com
-    - stage: deploy
-      name: "PyPI deploy"
-      script: skip
-      provider: pypi
-      distributions: sdist bdist_wheel
-      user: {{ cookiecutter.pypi_username }}
-      on:
-        tags: true
-        repo: {{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
-        python: 3.6
-      password:
-        secure: "REPLACE ME USING CMDLINE"
+# Let travis-ci CLI tool encrypt your password for PyPI deployment:
+# > gem install travis
+# > travis encrypt --add deploy.password --com
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: {{ cookiecutter.pypi_username }}
+  on:
+    tags: true
+    repo: {{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+    python: 3.6
+  password:
+    secure: "REPLACE ME USING CMDLINE"
