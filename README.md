@@ -15,7 +15,6 @@ cookiecutter https://github.com/gjeusel/soft-cookiecutter
 
 ## Details
 
-- **Standard** or **Pipenv**
 - **PBR - Python Build Reasonableness**
 - **Sphinx docs**: Documentation ready for generation and publication to **ReadTheDoc**
 - **CI** Travis or GitLab:
