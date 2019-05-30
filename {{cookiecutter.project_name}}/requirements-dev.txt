@@ -1,5 +1,7 @@
 -r requirements.txt
+{% if cookiecutter.sphinx_doc == 'yes' %}
 -r docs/requirements.txt
+{% endif %}
 
 pre-commit==1.15.2
 flake8

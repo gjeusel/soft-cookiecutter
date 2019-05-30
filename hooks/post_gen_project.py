@@ -1,15 +1,14 @@
 #!/usr/bin/env python
-import os
+import shutil
 import subprocess
+from os import path as osp
 
-PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
-
-
-def remove_file(filepath):
-    os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
-
+PROJECT_DIRECTORY = osp.realpath(osp.curdir)
 
 if __name__ == '__main__':
+
+    if "{{ cookiecutter.sphinx_doc }}" == "no":
+        shutil.rmtree(osp.join(PROJECT_DIRECTORY, 'docs'))
 
     print("Creating first commit (needed for PBR to fully work)")
     # Git add all & commit

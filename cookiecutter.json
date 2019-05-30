@@ -3,6 +3,7 @@
   "project_name": "bbq-mickey",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Fabulous Project.",
-  "open_source_license": ["MIT license", "BSD license"],
-  "pypi_username": "{{ cookiecutter.github_username }}"
+  "pypi_username": "{{ cookiecutter.github_username }}",
+  "sphinx_doc": "yes",
+  "open_source_license": ["MIT license", "BSD license"]
 }
