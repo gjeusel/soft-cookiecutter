@@ -51,7 +51,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"{{ cookiecutter.project_name }}"
-author = "GEM"
+author = ""
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
