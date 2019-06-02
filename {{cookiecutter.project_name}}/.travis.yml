@@ -33,6 +33,7 @@ jobs:
 # > gem install travis
 # > travis encrypt --add deploy.password --com
 deploy:
+  skip_cleanup: true
   provider: pypi
   distributions: sdist bdist_wheel
   user: {{ cookiecutter.pypi_username }}
