@@ -1,7 +1,7 @@
 {
   "github_username": "mickey",
   "project_name": "bbq-mickey",
-  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "project_short_description": "Fabulous Project.",
   "pypi_username": "{{ cookiecutter.github_username }}",
   "sphinx_doc": "yes",
