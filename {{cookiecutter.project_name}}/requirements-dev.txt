@@ -1,14 +1,11 @@
--r requirements.txt
-{% if cookiecutter.sphinx_doc == 'yes' %}
--r docs/requirements.txt
-{% endif %}
+pbr>=3.0
 
 pre-commit==1.15.2
 flake8
-yapf
+blake
 isort
 
-pytest >= 4.5.0
+pytest >= 5.4.1
 pytest-cov
 pytest-xdist
 codecov
