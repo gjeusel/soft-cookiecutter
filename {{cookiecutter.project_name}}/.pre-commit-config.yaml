@@ -1,7 +1,12 @@
 exclude: >
   (?x)^(
+  requirements.txt|
+  requirements-dev.txt|
+  requirements-prod.txt|
   docs|
-  Makefile
+  .git|
+  .eggs|
+  .tox
   )
 
 repos:
@@ -10,6 +15,7 @@ repos:
     sha: "v0.7.1"
     hooks:
     - id: trailing-whitespace
+      files: (^|/)a/.+\.(py|html|sh|css|js)$
     - id: end-of-file-fixer
     - id: check-merge-conflict
     - id: debug-statements
@@ -17,7 +23,6 @@ repos:
       language_version: python3
     - id: requirements-txt-fixer
     - id: name-tests-test
-      args: ['--django']
 
   - repo: https://gitlab.com/pycqa/flake8
     rev: "3.7.7"
@@ -41,7 +46,6 @@ repos:
     hooks:
     - id: python-safety-dependencies-check
       language: python
-      language_version: python3
 
   # seed isort to get consistent behaviour in CI
   - repo: https://github.com/asottile/seed-isort-config
@@ -49,19 +53,15 @@ repos:
     hooks:
     - id: seed-isort-config
       language: python
-      language_version: python3.6
 
   - repo: https://github.com/pre-commit/mirrors-isort
     sha: "v4.3.18"
     hooks:
     - id: isort
       language: python
-      language_version: python3.6
 
-  - repo: https://github.com/pre-commit/mirrors-yapf
-    rev: "v0.28.0"
+  # Black config
+  - repo: https://github.com/ambv/black
+    rev: "19.10b0"
     hooks:
-    - id: yapf
-      args: [-i, -r]
-      language: python
-      language_version: python3.6
+    - id: black
