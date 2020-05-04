@@ -2,7 +2,7 @@ pbr>=3.0
 
 pre-commit==1.15.2
 flake8
-blake
+black
 isort
 
 pytest >= 5.4.1
