@@ -106,3 +106,9 @@ ENV/
 
 # Macos
 *.DS_Store
+
+# VS code
+.vscode/
+
+# pytest-profiling
+prof/
