@@ -1,6 +1,6 @@
-pbr>=3.0
+pbr
 
-pre-commit==1.15.2
+pre-commit
 flake8
 black
 isort

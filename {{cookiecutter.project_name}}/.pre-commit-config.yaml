@@ -1,8 +1,5 @@
 exclude: >
   (?x)^(
-  requirements.txt|
-  requirements-dev.txt|
-  requirements-prod.txt|
   docs|
   .git|
   .eggs|
@@ -10,18 +7,6 @@ exclude: >
   )
 
 repos:
-
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: "v0.7.1"
-    hooks:
-    - id: trailing-whitespace
-      files: (^|/)a/.+\.(py|html|sh|css|js)$
-    - id: end-of-file-fixer
-    - id: check-merge-conflict
-    - id: debug-statements
-      language: python
-      language_version: python3
-    - id: requirements-txt-fixer
 
   - repo: https://gitlab.com/pycqa/flake8
     rev: "3.7.7"
