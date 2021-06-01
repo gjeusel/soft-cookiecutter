@@ -43,7 +43,7 @@ repos:
         language: python
 
   - repo: https://github.com/pre-commit/mirrors-isort
-    rev: "v5.5.4"
+    rev: "5.5.4"
     hooks:
       - id: isort
         language: python
