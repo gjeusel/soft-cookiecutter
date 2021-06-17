@@ -95,6 +95,7 @@ jobs:
       {%- endif %}
 
       - name: "Upload coverage"
+        # requires CODECOV_TOKEN in repository secrets
         uses: codecov/codecov-action@v1
         with:
           file: ./coverage.xml
