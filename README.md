@@ -16,7 +16,6 @@ cookiecutter https://github.com/gjeusel/soft-cookiecutter
 ## Details
 
 - **PBR - Python Build Reasonableness**
-- **Sphinx docs**: Documentation ready for generation and publication to **ReadTheDoc**
 - **CI** Travis or GitLab:
   - **Linter**: make use of [pre-commit](https://pre-commit.com/)
   - **Pytest**: unit testing (see [pytest-xdist](https://github.com/pytest-dev/pytest-xdist) for distributed testing)

@@ -82,7 +82,7 @@ exclude_lines = ['pragma: no cover', 'def __repr__', 'raise NotImplementedError'
 omit = ['.*']
 
 # [tool.poetry.plugins."console_scripts"]
-# "{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.__main__:app()"
+# "{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.cli:__main__"
 
 [tool.isort]
 line_length = 100
@@ -107,6 +107,7 @@ exclude = '''
 
 [tool.flake8]
 # https://www.flake8rules.com/
+# https://github.com/PyCQA/flake8/issues/234
 exclude = ['.git', '__pycache__', 'build', 'dist', '.eggs']
 max-line-length = 100
 ignore = [

@@ -8,7 +8,7 @@ on:
 
 jobs:
   tests:
-    name: "Python ${{ matrix.python-version }}"
+    name: {% raw %}"Python ${{ matrix.python-version }}"{% endraw %}
     runs-on: "ubuntu-latest"
 
     strategy:
@@ -24,7 +24,7 @@ jobs:
       - name: "setup python"
         uses: "actions/setup-python@v2"
         with:
-          python-version: "${{ matrix.python-version }}"
+          python-version: {% raw %}"${{ matrix.python-version }}"{% endraw %}
 
       {% if cookiecutter.open_source_license == 'MIT license' %}
       - name: "Install poetry"
