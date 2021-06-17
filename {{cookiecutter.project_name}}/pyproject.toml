@@ -49,6 +49,7 @@ Documentation" = "https://{{ cookiecutter.project_name }}.readthedocs.io"
 
 [tool.poetry.dependencies]
 python = "~3.9 || ~3.8"
+poetry = "^1.2.0a1"
 
 [tool.poetry.dev-dependencies]
 # Linting / Formatters
