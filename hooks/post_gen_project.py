@@ -40,3 +40,12 @@ if __name__ == "__main__":
     subprocess.call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
 
     print("{} created.".format(PROJECT_DIRECTORY.as_posix()))
+
+    if "{{ cookiecutter.tool }}".lower() == "poetry":
+        print("Notes:")
+        print("    - Make sure you got poetry ^1.2")
+        print("      > poetry --version")
+        print("    - Don't forget to install poetry version plugin")
+        print("      > poetry plugin add poetry-version-plugin")
+        print("    - Then install")
+        print("      > poetry install")
