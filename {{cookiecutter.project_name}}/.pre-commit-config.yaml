@@ -6,51 +6,52 @@ exclude: >
   .tox
   )
 
-repos:
-  - repo: https://gitlab.com/pycqa/flake8
-    rev: "3.7.7"
-    hooks:
-      - id: flake8
-        name: flake8
-        language: python
-        language_version: python3
-        files: \.py$
-        additional_dependencies: ["flake8-builtins"]
 
+repos:
   - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
     rev: "v1.0.4"
     hooks:
       - id: python-bandit-vulnerability-check
-        args:
-          [
-            --ignore-nosec,
-            -f,
-            screen,
-            -iii,
-            -lll,
-            -x,
-            ./tests,
-            -x,
-            ./.eggs,
-            --recursive,
-            .,
-          ]
+        args: [--ignore-nosec, -f, screen, -iii, -lll, -x, ./tests, -x, ./.eggs, --recursive, .]
 
   - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
     rev: "v1.1.0"
     hooks:
       - id: python-safety-dependencies-check
-        language: python
 
-  - repo: https://github.com/pre-commit/mirrors-isort
-    rev: "5.5.4"
+  - repo: local  # isort
     hooks:
       - id: isort
-        language: python
+        name: isort
+        entry: isort
         args: ["--profile", "black"]
+        language: python
+        files: \.py$
 
-  # Black config
-  - repo: https://github.com/ambv/black
-    rev: "19.10b0"
+  - repo: local
     hooks:
       - id: black
+        name: black
+        entry: black
+        language: python
+        files: \.py$
+
+  - repo: local
+    hooks:
+      - id: flake8
+        name: flake8
+        entry: flake8
+        language: python
+        files: \.py$
+
+  - repo: local  # mypy
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        require_serial: true
+        args:
+          - "--scripts-are-modules"
+          - "--no-incremental"  # do not use the cache
+        language: python
+        files: \.py$
