@@ -1,0 +1,159 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "{{ cookiecutter.project_name }}"
+version = "0.1.0"
+description = "{{ cookiecutter.project_short_description }}"
+authors = ["{{ cookiecutter.github_username }} <{{ cookiecutter.github_username }}@gmail.com>"]
+{%- set license_classifiers = {
+    "MIT license": "MIT",
+    "Apache Software License 2.0": "Apache-2.0",
+    "GNU General Public License v3.0": "GPL-3.0-only",
+    "GNU General Public License v2.0": "GPL-2.0-only",
+    "BSD 3-Clause 'New' or 'Revised' License": "BSD-3-Clause",
+    "GNU Lesser General Public License v2.1": "LGPL-2.1-only",
+    "BSD 2-Clause 'Simplified' License": "BSD-2-Clause",
+} %}
+{%- if cookiecutter.open_source_license in license_classifiers %}
+license = "{{ license_classifiers[cookiecutter.open_source_license] }}"
+{%- endif %}
+readme = "README.md"
+homepage ="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+keywords = ["awesome", "tags"]
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Software Development",
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues"
+"Source" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+{% if cookiecutter.mkdocs == "y" -%}"Documentation" = "https://{{ cookiecutter.project_name }}.readthedocs.io"{% endif %}
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+[tool.poetry.dev-dependencies]
+# Linting / Formatters
+pre-commit==1.20.0
+
+flake8==3.9.2
+flake8-bugbear==21.4.3
+flake8-builtins==1.5.3
+mypy==0.902
+
+black==19.10b0
+isort==5.7.0
+
+# test
+pytest = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+codecov = "*"
+
+{% if cookiecutter.mkdocs == 'yes' -%}
+# Documentation
+mkdocs = "*"
+mkautodoc = "*"
+mkdocs-material = "*"
+{% endif %}
+
+[tool.pytest.ini_options]
+addopts = '--cov --no-cov-on-fail'
+
+[tool.coverage.run]
+branch = true
+include = ['tests/*', '{{ cookiecutter.project_slug }}/*']
+
+[tool.coverage.report]
+exclude_lines = ['pragma: no cover', 'def __repr__', 'raise NotImplementedError']
+omit = ['.*']
+
+# [tool.poetry.plugins."console_scripts"]
+# "{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.__main__:app()"
+
+[tool.isort]
+line_length = 100
+profile = "black"
+known_third_party = ["{{ cookiecutter.project_slug }}"]
+
+[tool.black]
+line-length = 100
+target_version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | htmlcov
+    | build
+  )/
+)
+'''
+
+[tool.flake8]
+# https://www.flake8rules.com/
+exclude = ['.git', '__pycache__', 'build', 'dist', '.eggs']
+max-line-length = 100
+ignore = [
+  W503, # W503: line break before binary operator
+  W504, # W504: line break after binary operator
+
+  A001, # A001 "id" is a python builtin and is being shadowed, consider renaming the variable
+  A002, # A002 "type" is used as an argument and thus shadows a python builtin, consider renaming the argument
+  A003, # A003 "id" is a python builtin, consider renaming the class attribute
+
+  B008, # B008 Do not perform function calls in argument defaults
+
+  C901, # C901: is too complex
+
+  E203, # E203: whitespace before ':'
+  E266, # E266: too many leading '#' for block comment
+  E402, # E402: Module level import not at top of file
+  E731, # E731: Do not assign a lambda expression, use a def
+]
+
+[tool.mypy]
+python_version = 3.9
+
+# strict by default
+follow_imports = normal
+ignore_missing_imports = true
+warn_redundant_casts = true
+warn_unused_configs = true
+show_column_numbers = true
+
+disallow_subclassing_any = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+
+no_implicit_optional = true
+warn_unused_ignores = true
+warn_return_any = true
+strict_equality = true
+
+[tool.mypy.overrides]
+module = ['tests', 'docs']
+disallow_subclassing_any = False
+disallow_untyped_defs = False
+disallow_untyped_calls = False
+disallow_incomplete_defs = False
+disallow_untyped_decorators = False

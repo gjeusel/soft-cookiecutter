@@ -1,25 +1,42 @@
 #!/usr/bin/env python
 import shutil
 import subprocess
-from os import path as osp
+from pathlib import Path
 
-PROJECT_DIRECTORY = osp.realpath(osp.curdir)
+PROJECT_DIRECTORY = Path(".").absolute()
 
-if __name__ == '__main__':
 
-    if "{{ cookiecutter.sphinx_doc }}" == "no":
-        shutil.rmtree(osp.join(PROJECT_DIRECTORY, 'docs'))
+def remove(filepath):
+    target = PROJECT_DIRECTORY / filepath
 
-    print("Creating first commit (needed for PBR to fully work)")
-    # Git add all & commit
-    msg_commit = "First commit thx to cookiecutter."
+    if target.is_dir():
+        shutil.rmtree(target, ignore_errors=True)
+    else:
+        target.unlink()
 
+
+if __name__ == "__main__":
+
+    if "{{ cookiecutter.mkdocs }}" == "yes":
+        remove("docs")
+        remove("mkdocs.yml")
+
+    if "{{ cookiecutter.tool }}".lower() == "poetry":
+        to_remove = [
+            "requirements.txt",
+            "requirements-dev.txt",
+            "setup.cfg",
+            "setup.py",
+            ".coveragerc",
+        ]
+        for f in to_remove:
+            remove(f)
+    else:  # pbr
+        remove("pyproject.toml")
+
+    remove("licenses")
+
+    # git init
     subprocess.call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
-    subprocess.call(["git", "add", "."], cwd=PROJECT_DIRECTORY)
-    subprocess.call(["git", "commit", "-m", msg_commit], cwd=PROJECT_DIRECTORY)
 
-    print("{} created.".format(PROJECT_DIRECTORY))
-
-    msg = ("You should consider using:",
-           "pip install --editable {{ cookiecutter.project_name }}.")
-    print("\n".join(msg))
+    print("{} created.".format(PROJECT_DIRECTORY.as_posix()))

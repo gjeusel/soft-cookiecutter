@@ -1,0 +1,41 @@
+site_name: {{ cookiecutter.project_slug }}
+site_description: {{ cookiecutter.project_short_description }}
+site_url: https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}/index.html
+
+theme:
+  name: "material"
+  palette:
+    primary: "black"
+    accent: "teal"
+  # logo: "img/logo.png"
+  # favicon: "img/favicon.ico"
+
+repo_name: {{ cookiecutter.project_name }}
+repo_url: https://{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+edit_uri: ""
+
+site_dir: public # directory where the output HTML and other files are created
+
+# see https://www.mkdocs.org/user-guide/configuration/#preview-controls
+# creates links that point directly to the target file rather than the target directory
+use_directory_urls: false
+
+nav:
+  - Introduction: "index.md"
+  # - QuickStart: "quickstart.md"
+  # - Contributing: "contributing.md"
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      css_class: highlight
+  - mkautodoc
+
+extra_css:
+  - "css/custom.css"
+
+extra_javascript:
+  - "js/custom.js"

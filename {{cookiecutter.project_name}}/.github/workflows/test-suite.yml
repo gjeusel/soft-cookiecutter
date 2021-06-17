@@ -1,0 +1,39 @@
+---
+name: Test Suite
+
+on:
+  push:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  tests:
+    name: "Python ${{ matrix.python-version }}"
+    runs-on: "ubuntu-latest"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ['ubuntu-latest', ]
+        python-version: ["3.8", "3.9", "3.10.0-beta.2"]
+
+    steps:
+      - name: "Checkout Code"
+        uses: "actions/checkout@v2"
+
+      - name: "setup python"
+        uses: "actions/setup-python@v2"
+        with:
+          python-version: "${{ matrix.python-version }}"
+
+      {% if cookiecutter.open_source_license == 'MIT license' %}
+      - name: "Install poetry"
+        run: |
+          curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+
+      - name: "Install Project Dependencies"
+        run: poetry install
+
+      - name: "Run pytest"
+        run: poetry run pytest
+      {% endif %}

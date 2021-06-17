@@ -1,9 +1,21 @@
 {
-  "github_username": "mickey",
-  "project_name": "bbq-mickey",
+  "github_username": "gjeusel",
+  "project_name": "boiler-plate",
   "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
-  "project_short_description": "Fabulous Project.",
+  "project_short_description": "Fabulous Project Boilerplate.",
   "pypi_username": "{{ cookiecutter.github_username }}",
-  "sphinx_doc": "yes",
-  "open_source_license": ["MIT license", "BSD license"]
+  "mkdocs": "yes",
+  "tool": [
+    "poetry",
+    "pbr"
+  ],
+  "open_source_license": [
+    "MIT license",
+    "Apache Software License 2.0",
+    "GNU General Public License v3.0",
+    "GNU General Public License v2.0",
+    "BSD 3-Clause 'New' or 'Revised' License",
+    "GNU Lesser General Public License v2.1",
+    "BSD 2-Clause 'Simplified' License"
+  ]
 }
