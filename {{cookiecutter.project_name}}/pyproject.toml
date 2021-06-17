@@ -70,7 +70,7 @@ codecov = "*"
 mkdocs = "*"
 mkautodoc = "*"
 mkdocs-material = "*"
-{%- endif %}
+{%- endif -%}
 
 [tool.pytest.ini_options]
 addopts = '--cov --no-cov-on-fail'
@@ -87,12 +87,11 @@ omit = ['.*']
 # "{{ cookiecutter.project_slug }}" = "{{ cookiecutter.project_slug }}.cli:__main__"
 
 [tool.isort]
-line_length = 100
+line_length = 88
 profile = "black"
-known_third_party = ["{{ cookiecutter.project_slug }}"]
 
 [tool.black]
-line-length = 100
+line-length = 88
 target_version = ['py39']
 include = '\.pyi?$'
 exclude = '''
@@ -111,7 +110,7 @@ exclude = '''
 # https://www.flake8rules.com/
 # https://github.com/PyCQA/flake8/issues/234
 exclude = ['.git', '__pycache__', 'build', 'dist', '.eggs']
-max-line-length = 100
+max-line-length = 88
 ignore = [
   'W503', # W503: line break before binary operator
   'W504', # W504: line break after binary operator
@@ -153,7 +152,7 @@ warn_unused_ignores = true
 warn_return_any = true
 strict_equality = true
 
-[tool.mypy.overrides]
+[[tool.mypy.overrides]]
 module = ['tests', 'docs']
 disallow_subclassing_any = false
 disallow_untyped_defs = false
