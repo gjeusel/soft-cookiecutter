@@ -40,22 +40,24 @@ classifiers = [
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}/issues"
 "Source" = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
-{% if cookiecutter.mkdocs == "y" -%}"Documentation" = "https://{{ cookiecutter.project_name }}.readthedocs.io"{% endif %}
+{% if cookiecutter.mkdocs == "y" -%}"
+Documentation" = "https://{{ cookiecutter.project_name }}.readthedocs.io"
+{%- endif %}
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "~3.9 || ~3.8"
 
 [tool.poetry.dev-dependencies]
 # Linting / Formatters
-pre-commit==1.20.0
+pre-commit = "1.20.0"
 
-flake8==3.9.2
-flake8-bugbear==21.4.3
-flake8-builtins==1.5.3
-mypy==0.902
+flake8 = "3.9.*"
+flake8-bugbear = "21.4.*"
+flake8-builtins = "1.5.*"
+mypy = "0.902"
 
-black==19.10b0
-isort==5.7.0
+black = "19.10b0"
+isort = "5.7.*"
 
 # test
 pytest = "*"
@@ -68,7 +70,7 @@ codecov = "*"
 mkdocs = "*"
 mkautodoc = "*"
 mkdocs-material = "*"
-{% endif %}
+{%- endif %}
 
 [tool.pytest.ini_options]
 addopts = '--cov --no-cov-on-fail'
@@ -111,28 +113,28 @@ exclude = '''
 exclude = ['.git', '__pycache__', 'build', 'dist', '.eggs']
 max-line-length = 100
 ignore = [
-  W503, # W503: line break before binary operator
-  W504, # W504: line break after binary operator
+  'W503', # W503: line break before binary operator
+  'W504', # W504: line break after binary operator
 
-  A001, # A001 "id" is a python builtin and is being shadowed, consider renaming the variable
-  A002, # A002 "type" is used as an argument and thus shadows a python builtin, consider renaming the argument
-  A003, # A003 "id" is a python builtin, consider renaming the class attribute
+  'A001', # A001 "id" is a python builtin and is being shadowed, consider renaming the variable
+  'A002', # A002 "type" is used as an argument and thus shadows a python builtin, consider renaming the argument
+  'A003', # A003 "id" is a python builtin, consider renaming the class attribute
 
-  B008, # B008 Do not perform function calls in argument defaults
+  'B008', # B008 Do not perform function calls in argument defaults
 
-  C901, # C901: is too complex
+  'C901', # C901: is too complex
 
-  E203, # E203: whitespace before ':'
-  E266, # E266: too many leading '#' for block comment
-  E402, # E402: Module level import not at top of file
-  E731, # E731: Do not assign a lambda expression, use a def
+  'E203', # E203: whitespace before ':'
+  'E266', # E266: too many leading '#' for block comment
+  'E402', # E402: Module level import not at top of file
+  'E731', # E731: Do not assign a lambda expression, use a def
 ]
 
 [tool.mypy]
 python_version = 3.9
 
 # strict by default
-follow_imports = normal
+follow_imports = 'normal'
 ignore_missing_imports = true
 warn_redundant_casts = true
 warn_unused_configs = true
@@ -153,8 +155,8 @@ strict_equality = true
 
 [tool.mypy.overrides]
 module = ['tests', 'docs']
-disallow_subclassing_any = False
-disallow_untyped_defs = False
-disallow_untyped_calls = False
-disallow_incomplete_defs = False
-disallow_untyped_decorators = False
+disallow_subclassing_any = false
+disallow_untyped_defs = false
+disallow_untyped_calls = false
+disallow_incomplete_defs = false
+disallow_untyped_decorators = false
