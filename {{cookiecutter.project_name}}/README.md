@@ -1,11 +1,18 @@
-# {{ cookiecutter.project_name }}
+<p align="center"><strong>{{ cookiecutter.project_name }}</strong> <em>- {{ cookiecutter.project_short_description }}</em></p>
 
-[![Build Status](https://travis-ci.com/{{ cookiecutter.github_username  }}/{{ cookiecutter.project_name  }}.svg?branch=master)](https://travis-ci.com/{{ cookiecutter.github_username  }}/{{ cookiecutter.project_name  }})
-[![Codecov](https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/branch/master/graph/badge.svg)](https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}})
-[![PyPI](https://badge.fury.io/py/{{ cookiecutter.project_name  }}.svg)](https://pypi.python.org/pypi/{{ cookiecutter.project_name  }}/)
+<p align="center">
+<a href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/actions">
+    <img src="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/workflows/Test%20Suite/badge.svg" alt="Test Suite">
+</a>
+<a href="https://pypi.org/project/{{cookiecutter.project_name}}/">
+    <img src="https://badge.fury.io/py/{{cookiecutter.project_name}}.svg" alt="Package version">
+</a>
+<a href="https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}">
+    <img src="https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/branch/master/graph/badge.svg" alt="Codecov">
+</a>
+</p>
 
-{{ cookiecutter.project_short_description }}
-
+---
 
 ## Installation
 
