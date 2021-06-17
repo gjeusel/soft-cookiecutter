@@ -27,30 +27,29 @@ jobs:
           python-version: {% raw %}"${{ matrix.python-version }}"{% endraw %}
 
       {%- if cookiecutter.tool == 'poetry' %}
-      - name: "Install poetry"
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install poetry
+      - name: "Install and configure Poetry"
+        uses: snok/install-poetry@v1.1.6
+        with:
+          version: 1.2.0a1
+          virtualenvs-create: true
+          virtualenvs-in-project: false
 
-      - name: "Configure poetry"
-        run: python -m poetry config virtualenvs.in-project true
-
-      - name: "Set up cache"
-        uses: actions/cache@v1
-        id: cache
+      - name: "Load cached venv"
+        id: cached-poetry-dependencies
+        uses: actions/cache@v2
         with:
           path: .venv
-          key: {% raw %}venv-${{ runner.os }}-${{ steps.full-python-version.outputs.version }}-${{ hashFiles('**/poetry.lock') }}{% endraw %}
+          key: {% raw %}venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}{% endraw %}
 
-      - name: "Ensure cache is healthy"
-        if: steps.cache.outputs.cache-hit == 'true'
-        run: poetry run pip --version >/dev/null 2>&1 || rm -rf .venv
+      - name: "Install dependencies"
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-root
 
-      - name: "Install Dependencies"
-        run: poetry install
+      - name: "Install libraries"
+        run: poetry install --no-interaction
 
       - name: "Run tests"
-        run: poetry run pytest
+        run: poetry run pytest --cov={{ cookiecutter.project_slug }} --cov-report=xml
 
       - name: "Run linting"
         run: poetry run pre-commit run --all-files
@@ -58,3 +57,6 @@ jobs:
 
       - name: "Upload coverage"
         uses: codecov/codecov-action@v1
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: true
