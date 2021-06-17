@@ -3,7 +3,6 @@
   "project_name": "boiler-plate",
   "project_slug": "{{ cookiecutter.project_name.lower()|replace(' ', '_')|replace('-', '_')|replace('.', '_')|trim() }}",
   "project_short_description": "Fabulous Project Boilerplate.",
-  "pypi_username": "{{ cookiecutter.github_username }}",
   "mkdocs": "yes",
   "tool": [
     "poetry",
