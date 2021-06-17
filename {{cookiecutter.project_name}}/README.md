@@ -12,3 +12,13 @@
 ``` bash
 pip install {{ cookiecutter.project_name }}
 ```
+
+
+## Develop
+
+{%- if cookiecutter.tool == 'poetry' %}
+```bash
+poetry install
+poetry run pre-commit install -t pre-push
+```
+{%- endif %}

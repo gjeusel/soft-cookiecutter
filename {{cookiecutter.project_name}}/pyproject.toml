@@ -157,7 +157,11 @@ warn_return_any = true
 strict_equality = true
 
 [[tool.mypy.overrides]]
-module = ['tests', 'docs']
+{%- if cookiecutter.mkdocs == 'yes' -%}
+module = ['tests.*', 'docs.*']
+{%- else %}
+module = ['tests.*']
+{%- endif -%}
 disallow_subclassing_any = false
 disallow_untyped_defs = false
 disallow_untyped_calls = false
