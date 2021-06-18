@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.9"
 
-      {%- if cookiecutter.tool == 'poetry' %}
+      {% if cookiecutter.tool == 'poetry' -%}
       - name: "Install and configure Poetry"
         uses: snok/install-poetry@v1.1.6
         with:
@@ -68,7 +68,7 @@ jobs:
         with:
           python-version: {% raw %}"${{ matrix.python-version }}"{% endraw %}
 
-      {%- if cookiecutter.tool == 'poetry' %}
+      {% if cookiecutter.tool == 'poetry' -%}
       - name: "Install and configure Poetry"
         uses: snok/install-poetry@v1.1.6
         with:
