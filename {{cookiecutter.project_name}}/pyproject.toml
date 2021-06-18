@@ -74,7 +74,7 @@ codecov = "*"
 mkdocs = "*"
 mkautodoc = "*"
 mkdocs-material = "*"
-{%- endif -%}
+{%- endif %}
 
 [tool.pytest.ini_options]
 addopts = '--cov --no-cov-on-fail'
