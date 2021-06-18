@@ -28,6 +28,9 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: false
 
+      - name: "Install poetry version plugin"
+        run: poetry plugin add poetry-version-plugin
+
       - name: "Build distribution"
         run: poetry build
 
