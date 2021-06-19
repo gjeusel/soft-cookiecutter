@@ -17,7 +17,7 @@ cookiecutter https://github.com/gjeusel/soft-cookiecutter
 
 - Tooling choice:
   - **PBR** - Python Build Reasonableness (conda / pip)
-  - **poetry** - Poetry dynamic versioning
+  - **poetry** - [poetry-version-plugin](https://github.com/tiangolo/poetry-version-plugin)
 
 - **mkdocs**: generate beautiful documentation easily with [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 
