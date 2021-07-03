@@ -6,6 +6,7 @@ RUN \
   && pip3 install poetry==1.2.0a1
 
 ADD ./poetry.lock ./pyproject.toml ./
+RUN poetry config virtualenvs.create false
 RUN poetry install --no-dev
 
 ENV APP_DIR /{{cookiecutter.project_slug}}
