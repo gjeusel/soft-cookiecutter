@@ -32,9 +32,7 @@ jobs:
         run: pip install poetry-dynamic-versioning
 
       - name: "Build distribution"
-        run:
-          - poetry-dynamic-versioning
-          - poetry build
+        run: poetry-dynamic-versioning && poetry build
 
       - name: "Publish"
         run: poetry publish
