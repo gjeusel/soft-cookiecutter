@@ -29,10 +29,12 @@ jobs:
           virtualenvs-in-project: false
 
       - name: "Install poetry version plugin"
-        run: poetry plugin add poetry-version-plugin
+        run: pip install poetry-dynamic-versioning
 
       - name: "Build distribution"
-        run: poetry build
+        run:
+          - poetry-dynamic-versioning
+          - poetry build
 
       - name: "Publish"
         run: poetry publish

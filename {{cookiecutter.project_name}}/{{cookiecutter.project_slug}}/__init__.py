@@ -6,5 +6,5 @@ try:
 except Exception:
     __version__ = 'Version not found.'
 {% else -%}
-__version__ = "0.1.0"
+__version__ = "0.0.0"
 {%- endif %}

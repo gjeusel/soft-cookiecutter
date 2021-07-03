@@ -41,3 +41,4 @@ cookiecutter https://github.com/gjeusel/soft-cookiecutter
 
 - The Github workflow "test-suite" needs a secrets named `CODECOV_TOKEN` to publish to codecov
 - The Github workflow "publish" needs a secrets named `PYPI_TOKEN` to publish to public pypi
+- The Github workflow "publish" is triggered on new git tag
