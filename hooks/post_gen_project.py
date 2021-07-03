@@ -28,12 +28,12 @@ if __name__ == "__main__":
             "setup.cfg",
             "setup.py",
             ".coveragerc",
-            ".flake8",
         ]
         for f in to_remove:
             remove(f)
     else:  # pbr
         remove("pyproject.toml")
+        remove(".flake8")
 
     if "{{ cookiecutter.dockerfile }}" != "yes":
         remove("Dockerfile")
