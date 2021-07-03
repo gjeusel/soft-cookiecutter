@@ -68,7 +68,7 @@ isort = "5.8.*"
 # test
 pytest = "*"
 pytest-cov = "*"
-pytest-xdist = "*"
+pytest-xdist = {version = "*", optional = true}
 codecov = "*"
 
 {% if cookiecutter.mkdocs == 'yes' -%}
@@ -79,8 +79,8 @@ mkdocs-material = "*"
 {%- endif %}
 
 # Comfort
-pdbpp = "*"
-ptpython = "*"
+pdbpp = {version = "^0.10.2", optional = true}
+ptpython = {version = "^3.0.18", optional = true}
 
 [tool.pytest.ini_options]
 addopts = '--cov --no-cov-on-fail'
