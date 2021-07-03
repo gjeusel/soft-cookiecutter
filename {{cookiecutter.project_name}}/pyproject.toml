@@ -51,6 +51,7 @@ Documentation" = "https://{{ cookiecutter.project_name }}.readthedocs.io"
 [tool.poetry.dependencies]
 python = "~3.9 || ~3.8"
 poetry = "^1.2.0a1"
+dunamai = "^1.5.0"  # git dynamic versioning
 
 [tool.poetry.dev-dependencies]
 # Linting / Formatters
@@ -76,6 +77,10 @@ mkdocs = "*"
 mkautodoc = "*"
 mkdocs-material = "*"
 {%- endif %}
+
+# Comfort
+pdbpp = "*"
+ptpython = "*"
 
 [tool.pytest.ini_options]
 addopts = '--cov --no-cov-on-fail'
