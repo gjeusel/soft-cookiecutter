@@ -29,7 +29,7 @@ repos:
         entry: isort
         {%- endif %}
         args: ["--profile", "black"]
-        language: python
+        language: system
         files: \.py$
 
   - repo: local
@@ -41,7 +41,7 @@ repos:
         {%- else %}
         entry: black
         {%- endif %}
-        language: python
+        language: system
         files: \.py$
 
   - repo: local
@@ -53,7 +53,7 @@ repos:
         {%- else %}
         entry: flake8
         {%- endif %}
-        language: python
+        language: system
         files: \.py$
 
   - repo: local  # mypy
@@ -65,9 +65,8 @@ repos:
         {%- else %}
         entry: mypy
         {%- endif %}
-        require_serial: true
         args:
           - "--scripts-are-modules"
           - "--no-incremental"  # do not use the cache
-        language: python
+        language: system
         files: \.py$
