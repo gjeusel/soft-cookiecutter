@@ -35,12 +35,16 @@ if __name__ == "__main__":
     else:  # pbr
         remove("pyproject.toml")
 
+    if "{{ cookiecutter.dockerfile }}" != "yes":
+        remove("Dockerfile")
+
+    remove("dockerfiles")
     remove("licenses")
 
     # git init
     subprocess.call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
 
-    print("{} created.".format(PROJECT_DIRECTORY.as_posix()))
+    print(f"{PROJECT_DIRECTORY.as_posix()} created.")
 
     if "{{ cookiecutter.tool }}".lower() == "poetry":
         print("Notes:")

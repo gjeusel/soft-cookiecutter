@@ -1,0 +1,18 @@
+FROM python:3.9-slim
+
+RUN \
+  apt-get update \
+  && apt-get install --no-install-recommends -y build-essential git \
+  && pip3 install --no-cache-dir --upgrade pip
+
+ADD requirements.txt /requirements/
+
+RUN pip3 install -r /requirements/requirements.txt --no-cache-dir
+
+ENV APP_DIR /{{cookiecutter.project_slug}}
+WORKDIR $APP_DIR
+ADD . $APP_DIR
+
+RUN pip install --editable .
+
+CMD ["python", "-c", "import {{cookiecutter.project_slug}}; print({{cookiecutter.project_slug}}.__version__)"]
