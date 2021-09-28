@@ -17,7 +17,7 @@ def remove(filepath):
 
 if __name__ == "__main__":
 
-    if "{{ cookiecutter.mkdocs }}" == "yes":
+    if "{{ cookiecutter.mkdocs }}" != "yes":
         remove("docs")
         remove("mkdocs.yml")
 
