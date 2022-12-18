@@ -1,13 +1,12 @@
 <p align="center">
-  <h1> Soft </h1>
-  <img width="60%" src="_static/cookiecutter_logo.png" />
+  <p style="flex: 1 1 0%" align="center">
+    <img width="40%" src="_static/cookiecutter.svg" />
+    <svg width="32" height="32" viewBox="0 0 48 48"><path fill="none" stroke="#888888" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M7 18h11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11h11a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H30v11a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2V30H7a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2Z" />
+    <img width="40%" src="_static/cruft.png" />
+  </p>
   <br/>
   <em> Everything you need for a modern python project/package. </em>
 </p>
-
----
-
-## Soft-cookiecutter template
 
 See [cookiecutter](https://github.com/audreyr/cookiecutter) and [cruft](https://github.com/cruft/cruft) for more informations.
 
