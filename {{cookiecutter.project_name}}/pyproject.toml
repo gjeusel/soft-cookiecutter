@@ -35,8 +35,8 @@ dev = [
   # "types-pyyaml",
   #
   # testing libs:
+  "coverage[toml] >= 6.5.0,<7.0",
   "pytest==7.1.*",
-  "pytest-cov[toml]==4.0.*",
   "pytest-sugar==0.9.*",
   "pytest-mock==3.10.*",
   # "pytest-asyncio==0.20.*",
@@ -130,7 +130,7 @@ run = { source = [
   "{{ cookiecutter.project_slug }}",
 ], branch = true, omit = [
   "*tests/*",
-] }
+], context = "${CONTEXT}" }
 report = { precision = 2, exclude_lines = [
   "pragma: no cover",
   "raise NotImplementedError",
