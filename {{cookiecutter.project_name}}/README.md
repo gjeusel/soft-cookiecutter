@@ -19,8 +19,6 @@
   </p>
   <br/>
   <em>{{ cookiecutter.project_short_description }}</em>
-
-<p align="center">
 </p>
 
 ---
