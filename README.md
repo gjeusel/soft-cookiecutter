@@ -1,9 +1,8 @@
+<p style="flex: 1 1 0%" align="center">
+  <img width="45%" src="_static/cookiecutter.svg" />
+  <img height="80px" src="_static/cruft.png" />
+</p>
 <p align="center">
-  <p style="flex: 1 1 0%" align="center">
-    <img width="45%" src="_static/cookiecutter.svg" />
-    <img width="45%" src="_static/cruft.png" />
-  </p>
-  <br/>
   <em> Everything you need for a modern python project/package. </em>
 </p>
 
