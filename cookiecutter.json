@@ -12,5 +12,8 @@
     "BSD 3-Clause 'New' or 'Revised' License",
     "GNU Lesser General Public License v2.1",
     "BSD 2-Clause 'Simplified' License"
+  ],
+  "_copy_without_render": [
+    "{{cookiecutter.project_name}}/.github/workflows/ci.yml"
   ]
 }
