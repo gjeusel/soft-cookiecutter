@@ -7,6 +7,8 @@
   <em> Everything you need for a modern python project/package. </em>
 </p>
 
+---
+
 See [cookiecutter](https://github.com/audreyr/cookiecutter) and [cruft](https://github.com/cruft/cruft) for more informations.
 
 ## Usage
@@ -28,7 +30,7 @@ cruft create https://github.com/gjeusel/soft-cookiecutter
 - **pre-commit**: a framework for managing and maintaining multi-language pre-commit hooks
 - **mkdocs**: generate beautiful documentation easily with [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
 
-#### CI Github actions:
+#### CI Github actions
 
 - **Linter & Formatter**: [ruff](https://github.com/charliermarsh/ruff) + [black](https://github.com/psf/black)
 - **Type Checker**: [mypy](https://github.com/python/mypy)
