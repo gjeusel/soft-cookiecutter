@@ -1,17 +1,33 @@
-site_name: {{ cookiecutter.project_slug }}
-site_description: {{ cookiecutter.project_short_description }}
-site_url: https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}/index.html
+site_name: "{{ cookiecutter.project_slug }}"
+site_description: "{{ cookiecutter.project_short_description }}"
+site_url: "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_name }}/index.html"
 
 theme:
   name: "material"
-  palette:
-    primary: "black"
-    accent: "teal"
   # logo: "img/logo.png"
   # favicon: "img/favicon.ico"
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: "black"
+      accent: "teal"
+      toggle:
+        icon: material/lightbulb-outline
+        name: "Switch to dark mode"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: "black"
+      accent: "teal"
+      toggle:
+        icon: material/lightbulb
+        name: "Switch to light mode"
+  features:
+    - content.tabs.link
 
-repo_name: {{ cookiecutter.project_name }}
-repo_url: https://{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}
+repo_name: "{{ cookiecutter.project_name }}"
+repo_url: "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
 edit_uri: ""
 
 site_dir: public # directory where the output HTML and other files are created
@@ -22,17 +38,46 @@ use_directory_urls: false
 
 nav:
   - Introduction: "index.md"
-  # - QuickStart: "quickstart.md"
-  # - Contributing: "contributing.md"
+  - reference.md
+  - changelog.md
+
+markdown_extensions:
+  - tables
+  - markdown_include.include:
+      base_path: docs
+  - toc:
+      permalink: true
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.extra
+  - mdx_truly_sane_lists
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      auto_append:
+        - docs/abbreviations.md
 
 plugins:
   - search
-
-markdown_extensions:
-  - admonition
-  - codehilite:
-      css_class: highlight
-  - mkautodoc
+  - exclude:
+      glob:
+        - abbreviations.md # is not to be rendered
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            # https://mkdocstrings.github.io/python/usage/#globallocal-options
+            docstring_style: "google"
+            line_length: 60
+            heading_level: 2
+            merge_init_into_class: true
+            show_root_heading: true
+            docstring_section_style: "list"
+            show_signature_annotations: false
+            separate_signature: true
 
 extra_css:
   - "css/custom.css"
