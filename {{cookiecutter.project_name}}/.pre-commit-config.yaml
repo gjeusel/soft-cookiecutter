@@ -1,72 +1,36 @@
-exclude: >
-  (?x)^(
-  docs|
-  .git|
-  .eggs|
-  .tox
-  )
-
+fail_fast: false
 
 repos:
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
-    rev: "v1.0.4"
-    hooks:
-      - id: python-bandit-vulnerability-check
-        args: [--ignore-nosec, -f, screen, -iii, -lll, -x, ./tests, -x, ./.eggs, --recursive, .]
-
-  - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
-    rev: "v1.1.0"
-    hooks:
-      - id: python-safety-dependencies-check
-
-  - repo: local  # isort
-    hooks:
-      - id: isort
-        name: isort
-        {% if cookiecutter.tool == 'poetry' -%}
-        entry: poetry run isort
-        {%- else %}
-        entry: isort
-        {%- endif %}
-        args: ["--profile", "black"]
-        language: system
-        files: \.py$
-
   - repo: local
     hooks:
-      - id: black
-        name: black
-        {% if cookiecutter.tool == 'poetry' -%}
-        entry: poetry run black
-        {%- else %}
-        entry: black
-        {%- endif %}
+      - id: lint
+        name: Lint
+        entry: make lint
+        types: [python]
         language: system
-        files: \.py$
+        pass_filenames: false
 
-  - repo: local
-    hooks:
-      - id: flake8
-        name: flake8
-        {% if cookiecutter.tool == 'poetry' -%}
-        entry: poetry run flake8
-        {%- else %}
-        entry: flake8
-        {%- endif %}
-        language: system
-        files: \.py$
-
-  - repo: local  # mypy
-    hooks:
       - id: mypy
-        name: mypy
-        {% if cookiecutter.tool == 'poetry' -%}
-        entry: poetry run mypy
-        {%- else %}
-        entry: mypy
-        {%- endif %}
-        args:
-          - "--scripts-are-modules"
-          - "--no-incremental"  # do not use the cache
+        name: Mypy
+        entry: make mypy
+        types: [python]
         language: system
-        files: \.py$
+        pass_filenames: false
+{% if cookiecutter.dockerfile == 'yes' %}
+
+  - repo: https://github.com/jazzband/pip-tools
+    rev: 6.9.0
+    hooks:
+      - id: pip-compile
+        name: pip-compile pyproject.toml
+        files: ^pyproject.toml$
+        args:
+          [
+            --no-emit-index-url,
+            --extra,
+            prod,
+            --output-file,
+            requirements/requirements.txt,
+            pyproject.toml,
+          ]
+{%- endif -%}

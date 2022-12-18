@@ -1,0 +1,38 @@
+// These settings will update along with git. In order to change them locally
+// without committing those changes, you need to tell git to begin ignoring them.
+//
+// to stop using defaults: git update-index --skip-worktree .vscode/settings.json
+// go back to using defaults: git update-index --no-skip-worktree .vscode/settings.json
+{
+  // ________ python ________
+  // "python.logging.level": "debug", // when debugging vscode python extension
+  "python.analysis.typeCheckingMode": "off", // disable pylance type checking to sue mypy
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyPath": "mypy",
+  "python.linting.mypyArgs": [
+    "--sqlite-cache" // Use an SQLite database to store the cache. (Faster on macos)
+  ],
+  "python.linting.flake8Enabled": false,
+  // Black Formatter (the one from ms-python.python is outdated, see: https://github.com/microsoft/vscode-python/issues/18782)
+  "python.formatting.provider": "none",
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  // ________ misc ________
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  }
+}

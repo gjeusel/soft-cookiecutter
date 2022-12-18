@@ -45,7 +45,6 @@ dev = [
   # code quality:
   "pre-commit==2.20.*",
   "black==22.10.*",
-  "isort[colors]==5.10.*",
   "ruff",                  # replacement of flake8 & associated
   #
   "mypy==0.991",

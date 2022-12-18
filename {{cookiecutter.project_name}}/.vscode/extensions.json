@@ -1,0 +1,16 @@
+// These settings will update along with git. In order to change them locally
+// without committing those changes, you need to tell git to begin ignoring them.
+//
+// to stop using defaults: git update-index --skip-worktree .vscode/extensions.json
+// go back to using defaults: git update-index --no-skip-worktree .vscode/extensions.json
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "charliermarsh.ruff",
+    "matangover.mypy",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}
