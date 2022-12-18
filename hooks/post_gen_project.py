@@ -36,12 +36,12 @@ def main():
     # git init
     subprocess.check_call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
 
-    # git remote add origin
-    ssh_url = "git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
-    subprocess.check_call(
-        ["git", "remote", "add", "origin", ssh_url],
-        cwd=PROJECT_DIRECTORY,
-    )
+    # # git remote add origin
+    # ssh_url = "git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
+    # subprocess.check_call(
+    #     ["git", "remote", "add", "origin", ssh_url],
+    #     cwd=PROJECT_DIRECTORY,
+    # )
 
     https_url = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
     notes = [
