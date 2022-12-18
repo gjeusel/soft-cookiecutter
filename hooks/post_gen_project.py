@@ -46,16 +46,16 @@ def main():
     https_url = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
     notes = [
         "- To create the github repository:",
-        f"  > gh repo create {https_url}",
+        "  > gh repo create --public --description '{{ cookiecutter.project_short_description }}'"
+        f" --template 'https://github.com/gjeusel/soft-cookiecutter' {https_url}",
         "",
         "- To commit and push generated template:",
         "  > {}".format(
             " && ".join(
                 [
-                    "cd {{ cookiecutter.project_name }}",
                     "git add .",
                     "git commit -m 'add(first-commit): templated by soft-cookiecutter'",
-                    "git push",
+                    "git push --set-upstream origin main",
                 ]
             )
         ),
