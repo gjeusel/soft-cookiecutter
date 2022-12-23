@@ -75,7 +75,7 @@ coverage.xml
 *.pot
 
 # mkdocs documentation
-site/
+docs-build/
 
 # IntelliJ Idea family of suites
 .idea

@@ -90,7 +90,6 @@ jobs:
         run: pip freeze
 
       - run: mkdir coverage
-
       - name: Test
         run: coverage run -m pytest -vv
         env:
@@ -103,7 +102,36 @@ jobs:
           name: coverage
           path: coverage
 
-  docs-build:
+  coverage-combine:
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Get coverage files
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage
+          path: coverage
+
+      - run: pip install coverage[toml]
+
+      - run: ls -la coverage
+      - run: coverage combine coverage
+      - run: coverage report
+      - run: coverage html --show-contexts --title "pydantic coverage for ${{ github.sha }}"
+
+      - name: Store coverage html
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-html
+          path: htmlcov
+
+  check-docs-build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -132,16 +160,9 @@ jobs:
       - name: Build docs site
         run: mkdocs build
 
-      - name: Store docs site
-        uses: actions/upload-artifact@v3
-        with:
-          name: docs
-          path: site
-
-  deploy:
-    name: Deploy
-    needs:
-      - check
+  publish-pypi:
+    name: Publish Pypi
+    needs: [lint, test, check-docs-build]
     if: "success() && startsWith(github.ref, 'refs/tags/')"
     runs-on: ubuntu-latest
 
@@ -152,12 +173,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-
-      - name: get docs
-        uses: actions/download-artifact@v3
-        with:
-          name: docs
-          path: site
 
       - name: install
         run: pip install -U twine build packaging
@@ -173,6 +188,41 @@ jobs:
         run: twine upload dist/*
         env:
           TWINE_USERNAME: __token__
-          TWINE_PASSWORD: ${{ secrets.pypi_token }}
+          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+  deploy-docs:
+    name: Deploy docs on github pages
+    needs: [lint, test, check-docs-build]
+    if: "success() && startsWith(github.ref, 'refs/tags/')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+          cache: "pip"
+          cache-dependency-path: pyproject.toml
+
+      - uses: actions/cache@v3
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: >
+            mkdocs
+            ${{ runner.os }}
+            ${{ env.pythonLocation }}
+            ${{ hashFiles('pyproject.toml') }}
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: pip install -e .[doc]
+
+      - name: Build docs site
+        run: >
+          mkdocs gh-deploy
+          --message "upt(doc): ${{ github.sha }}"
+          --remote-branch=gh-pages
 
 {%- endraw -%}

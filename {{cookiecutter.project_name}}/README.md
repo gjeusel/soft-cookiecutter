@@ -1,23 +1,24 @@
+<h1> {{ cookiecutter.project_name }} </h1>
+
 <p align="center">
-  <h1> {{ cookiecutter.project_name }} </h1>
-  <p>
-    <a href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/actions">
-        <img src="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/workflows/Test%20Suite/badge.svg" alt="Test Suite" onerror="this.style.display='none'">
-    </a>
-    <a href="https://pypi.org/project/{{cookiecutter.project_name}}/">
-        <img src="https://badge.fury.io/py/{{cookiecutter.project_name}}.svg" alt="Package version" onerror="this.style.display='none'">
-    </a>
-    <a href="https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}">
-        <img src="https://codecov.io/gh/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/branch/master/graph/badge.svg" alt="Codecov" onerror="this.style.display='none'">
-    </a>
-    <!-- <a href="github page link for mkdocs"> -->
-    <!--   <img src="https://img.shields.io/badge/mkdocs-pages-brightgreen" alt="MKDocs github page"> -->
-    <!-- </a> -->
-    <a href="https://github.com/pre-commit/pre-commit">
-        <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white" alt="pre-commit">
-    </a>
-  </p>
-  <br/>
+  <a href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/actions?query=workflow%3ACI+branch%3A+main+">
+      <img src="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/workflows//CI/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
+  </a>
+  <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}" alt="Test Coverage" onerror="this.style.display='none'">
+      <img src="https://coverage-badge.samuelcolvin.workers.dev/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}.svg" alt="Coverage">
+  </a>
+  <a href="https://pypi.org/project/{{cookiecutter.project_name}}/">
+      <img src="https://badge.fury.io/py/{{cookiecutter.project_name}}.svg" alt="Package version" onerror="this.style.display='none'">
+  </a>
+  <a href="https://{{cookiecutter.github_username}}.github.io/{{cookiecutter.project_name}}/">
+    <img src="https://img.shields.io/badge/mkdocs-pages-brightgreen" alt="MKDocs github page">
+  </a>
+  <a href="https://github.com/pre-commit/pre-commit">
+      <img src="https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white" alt="pre-commit">
+  </a>
+</p>
+
+<p align="center">
   <em>{{ cookiecutter.project_short_description }}</em>
 </p>
 
