@@ -79,8 +79,9 @@ all = [
 ]
 
 [tool.ruff]
-select = ["E", "F"]
-extend-select = [
+select = [
+  "E",
+  "F",
   "UP",  # pyupgrade
   "C4",  # flake8-comprehensions
   "ICN", # flake8-import-conventions
