@@ -86,6 +86,8 @@ docs-build/
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
 
+.mypy_cache
+
 # PyBuilder
 target/
 
