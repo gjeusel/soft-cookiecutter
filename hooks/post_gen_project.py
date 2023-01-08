@@ -36,18 +36,11 @@ def main():
     # git init
     subprocess.check_call(["git", "init", "."], cwd=PROJECT_DIRECTORY)
 
-    # # git remote add origin
-    # ssh_url = "git@github.com:{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
-    # subprocess.check_call(
-    #     ["git", "remote", "add", "origin", ssh_url],
-    #     cwd=PROJECT_DIRECTORY,
-    # )
+    # print notes on easy configs steps
 
-    https_url = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}.git"
     notes = [
         "- To create the github repository:",
-        "  > gh repo create --public --description '{{ cookiecutter.project_short_description }}'"
-        f" --template 'https://github.com/gjeusel/soft-cookiecutter' {https_url}",
+        "  > gh repo create --public --description '{{ cookiecutter.project_short_description }}'",
         "",
         "- To commit and push generated template:",
         "  > {}".format(
