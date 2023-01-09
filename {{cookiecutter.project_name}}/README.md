@@ -8,7 +8,7 @@
       <img src="https://coverage-badge.samuelcolvin.workers.dev/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}.svg" alt="Coverage">
   </a>
   <a href="https://pypi.org/project/{{cookiecutter.project_name}}/">
-      <img src="https://badge.fury.io/py/{{cookiecutter.project_name}}.svg" alt="Package version" onerror="this.style.display='none'">
+      <img src="https://img.shields.io/pypi/v/{{cookiecutter.project_slug}}" alt="Package version" onerror="this.style.display='none'">
   </a>
   <a href="https://{{cookiecutter.github_username}}.github.io/{{cookiecutter.project_name}}/">
     <img src="https://img.shields.io/badge/mkdocs-pages-brightgreen" alt="MKDocs github page">
