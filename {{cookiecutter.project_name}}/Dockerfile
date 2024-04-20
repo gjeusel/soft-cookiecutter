@@ -6,9 +6,9 @@ RUN \
   && pip3 install --no-cache-dir --upgrade pip \
   && rm -rf /var/lib/apt/lists/*
 
-ADD requirements/requirements-prod.txt /requirements/
+ADD requirements/requirements.txt /requirements/
 
-RUN pip3 install --no-cache-dir -r /requirements/requirements-prod.txt
+RUN pip3 install --no-cache-dir -r /requirements/requirements.txt
 
 ENV APP_DIR /{{cookiecutter.project_slug}}
 WORKDIR $APP_DIR
