@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/actions?query=workflow%3ACI+branch%3Amain">
-      <img src="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/workflows//CI/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
+      <img src="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/workflows/ci.yml/badge.svg?event=push&branch=main" alt="Test Suite" onerror="this.style.display='none'">
   </a>
   <a href="https://coverage-badge.samuelcolvin.workers.dev/redirect/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}" alt="Test Coverage" onerror="this.style.display='none'">
       <img src="https://coverage-badge.samuelcolvin.workers.dev/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}.svg" alt="Coverage">
