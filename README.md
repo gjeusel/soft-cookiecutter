@@ -31,14 +31,8 @@ cruft create https://github.com/gjeusel/soft-cookiecutter
 
 #### CI Github actions
 
-- **Linter & Formatter**: [ruff](https://github.com/charliermarsh/ruff) + [black](https://github.com/psf/black)
+- **Linter & Formatter**: [ruff](https://github.com/charliermarsh/ruff)
 - **Type Checker**: [mypy](https://github.com/python/mypy)
 - **Pytest**: unit testing
-- **Code Coverage**: testing coverage report using [pytest-cov](https://github.com/pytest-dev/pytest-cov)
-- **PyPI**: deployment only on new tag in master branch
-
-#### Remarks
-
-- The Github workflow "test-suite" needs a secrets named `CODECOV_TOKEN` to publish to codecov
-- The Github workflow "publish" needs a secrets named `PYPI_TOKEN` to publish to public pypi
-- The Github workflow "publish" is triggered on new git tag
+- **Code Coverage**: [coverage](https://github.com/nedbat/coveragepy) & [smokeshow](https://github.com/samuelcolvin/smokeshow)
+- **PyPI**: deployment only on new tag in main branch
