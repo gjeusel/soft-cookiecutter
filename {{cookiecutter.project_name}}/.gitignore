@@ -102,3 +102,6 @@ ENV/
 
 # Macos
 *.DS_Store
+#
+# jupyterlab
+*.virtual_documents
