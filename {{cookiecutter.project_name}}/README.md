@@ -29,29 +29,3 @@
 ```bash
 pip install {{ cookiecutter.project_name }}
 ```
-
-### Developper
-
-##### Install
-
-```bash
-make install
-```
-
-##### Launch tests:
-
-```bash
-pytest
-```
-
-##### Write docs:
-
-```bash
-mkdocs serve --watch .
-```
-
-### Update Cookiecutter Template
-
-```bash
-cruft update --skip-apply-ask --allow-untracked-files --project-dir .
-```

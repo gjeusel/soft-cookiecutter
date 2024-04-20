@@ -27,6 +27,14 @@ test:
 .PHONY: all
 all: lint mypy test
 
+.PHONY: cruft
+cruft:
+	cruft update --skip-apply-ask --allow-untracked-files --project-dir .
+
+.PHONY: doc
+doc:
+	mkdocs serve --watch .
+
 .PHONY: clean
 clean:
 	rm -rf `find . -name __pycache__`
