@@ -58,6 +58,7 @@ def main():
         "    > git checkout -b gh-pages && git push origin gh-pages && git checkout main",
         "    and configure github pages for this repo at:",
         "    https://github.com/{{ cookiecutter.github_username }}/{ cookiecutter.project_name }}/settings/pages",
+        "    It should be protected, but allowed to be force-pushed.",
         "",
         "  * set up the action to publish to pypi in CI:",
         "    > gh secret set PYPI_TOKEN",
