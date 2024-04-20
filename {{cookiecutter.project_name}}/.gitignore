@@ -62,8 +62,9 @@ instance/
 # Scrapy stuff:
 .scrapy
 
-# mkdocs doc
+# mkdocs documentation
 site/
+docs-build/
 
 # PyBuilder
 target/
