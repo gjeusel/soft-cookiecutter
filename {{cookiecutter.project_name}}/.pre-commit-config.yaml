@@ -18,19 +18,12 @@ repos:
         pass_filenames: false
 {% if cookiecutter.dockerfile == 'yes' %}
 
-  - repo: https://github.com/jazzband/pip-tools
-    rev: 6.9.0
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    # uv version.
+    rev: 0.1.35
     hooks:
       - id: pip-compile
         name: pip-compile pyproject.toml
         files: ^pyproject.toml$
-        args:
-          [
-            --no-emit-index-url,
-            --extra,
-            prod,
-            --output-file,
-            requirements/requirements-prod.txt,
-            pyproject.toml,
-          ]
+        args: [pyproject.toml, -o, requirements/requirements.txt]
 {%- endif -%}

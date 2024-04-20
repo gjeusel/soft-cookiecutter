@@ -1,4 +1,4 @@
-<h1> {{ cookiecutter.project_name }} </h1>
+<h1 align="center"> {{ cookiecutter.project_name }} </h1>
 
 <p align="center">
   <a href="https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.project_name}}/actions?query=workflow%3ACI+branch%3Amain">
@@ -28,30 +28,4 @@
 
 ```bash
 pip install {{ cookiecutter.project_name }}
-```
-
-### Developper
-
-##### Install
-
-```bash
-make install
-```
-
-##### Launch tests:
-
-```bash
-pytest
-```
-
-##### Write docs:
-
-```bash
-mkdocs serve --watch .
-```
-
-### Update Cookiecutter Template
-
-```bash
-cruft update --skip-apply-ask --allow-untracked-files --project-dir .
 ```

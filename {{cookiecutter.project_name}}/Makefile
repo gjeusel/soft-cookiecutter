@@ -1,26 +1,24 @@
 .DEFAULT_GOAL := all
-black = black {{ cookiecutter.project_slug }} tests
-ruff = ruff {{ cookiecutter.project_slug }} tests
 
 .PHONY: install
 install:
-	pip install -U pip
-	pip install -e .[all]
+	@which uv > /dev/null 2>&1 || (echo "Installing uv..." && curl -LsSf https://astral.sh/uv/install.sh | sh)
+	uv pip install -e .[all]
 	pre-commit install -t pre-push
 
 .PHONY: format
 format:
-	$(ruff) --fix
-	$(black)
+	ruff check --fix {{ cookiecutter.project_slug }} tests/
+	ruff format {{ cookiecutter.project_slug }} tests/
 
 .PHONY: lint
 lint:
-	ruff {{ cookiecutter.project_slug }}/ tests/
-	$(black) --check
+	ruff check {{ cookiecutter.project_slug }} tests/
+	ruff format --check {{ cookiecutter.project_slug }} tests/
 
 .PHONY: mypy
 mypy:
-	mypy --cache-fine-grained {{ cookiecutter.project_slug }}
+	mypy {{ cookiecutter.project_slug }}
 
 .PHONY: test
 test:
@@ -28,6 +26,14 @@ test:
 
 .PHONY: all
 all: lint mypy test
+
+.PHONY: cruft
+cruft:
+	cruft update --skip-apply-ask --allow-untracked-files --project-dir .
+
+.PHONY: doc
+doc:
+	mkdocs serve --watch .
 
 .PHONY: clean
 clean:
@@ -39,6 +45,7 @@ clean:
 	rm -f `find . -type f -name '.*DS_Store'`
 	rm -rf .cache
 	rm -rf .*_cache
+	rm -rf .ropeproject
 	rm -rf htmlcov
 	rm -rf *.egg-info
 	rm -rf .eggs
