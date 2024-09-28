@@ -3,37 +3,37 @@
 .PHONY: install
 install:
 	@which uv > /dev/null 2>&1 || (echo "Installing uv..." && curl -LsSf https://astral.sh/uv/install.sh | sh)
-	uv pip install -e .[all]
-	pre-commit install -t pre-push
+	uv sync --all-extras --python 3.12
+	uv run pre-commit install -t pre-push
 
 .PHONY: format
 format:
-	ruff check --fix {{ cookiecutter.project_slug }} tests/
-	ruff format {{ cookiecutter.project_slug }} tests/
+	uv run ruff check --fix {{ cookiecutter.project_slug }} tests/
+	uv run ruff format {{ cookiecutter.project_slug }} tests/
 
 .PHONY: lint
 lint:
-	ruff check {{ cookiecutter.project_slug }} tests/
-	ruff format --check {{ cookiecutter.project_slug }} tests/
+	uv run ruff check {{ cookiecutter.project_slug }} tests/
+	uv run ruff format --check {{ cookiecutter.project_slug }} tests/
 
 .PHONY: mypy
 mypy:
-	mypy {{ cookiecutter.project_slug }}
+	uv run mypy {{ cookiecutter.project_slug }}
 
 .PHONY: test
 test:
-	pytest
+	uv run pytest
 
 .PHONY: all
 all: lint mypy test
 
 .PHONY: cruft
 cruft:
-	cruft update --skip-apply-ask --allow-untracked-files --project-dir .
+	uv run cruft update --skip-apply-ask --allow-untracked-files --project-dir .
 
 .PHONY: doc
 doc:
-	mkdocs serve --watch .
+	uv run mkdocs serve --watch .
 
 .PHONY: clean
 clean:

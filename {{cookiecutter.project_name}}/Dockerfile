@@ -1,19 +1,25 @@
-FROM python:3.10.8
+FROM ghcr.io/astral-sh/uv:0.4.10-python3.12-bookworm-slim
 
-RUN \
-  apt-get update \
-  # && apt-get install --no-install-recommends -y some-pkg \
-  && pip3 install --no-cache-dir --upgrade pip \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install --no-install-recommends -y \
+    git \
+    && rm -rf /var/lib/apt/lists/*
 
-ADD requirements/requirements.txt /requirements/
+# Enable bytecode compilation
+ENV UV_COMPILE_BYTECODE=1
 
-RUN pip3 install --no-cache-dir -r /requirements/requirements.txt
+# Copy from the cache instead of linking since it's a mounted volume
+ENV UV_LINK_MODE=copy
 
-ENV APP_DIR /{{cookiecutter.project_slug}}
-WORKDIR $APP_DIR
-ADD . $APP_DIR
+WORKDIR /app
 
-RUN pip install --editable .
+# Install the project's dependencies using the lockfile and settings
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project --no-dev --no-install-workspace
+
+ADD . /app
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen --no-dev
 
 CMD ["python", "-c", "print(__import__('{{cookiecutter.project_slug}}').__version__)"]

@@ -94,3 +94,6 @@ target/
 # Cookiecutter
 output/
 python_boilerplate/
+
+# jupyterlab
+*.virtual_documents

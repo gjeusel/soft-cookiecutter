@@ -6,33 +6,22 @@
 {
   // ________ python ________
   // "python.logging.level": "debug", // when debugging vscode python extension
+  "python.envFile": "", // disable vscode failing parsing of .env (when pydantic settings syntax)
   "python.analysis.typeCheckingMode": "off", // disable pylance type checking to sue mypy
-  "python.linting.mypyEnabled": true,
-  "python.linting.mypyPath": "mypy",
-  "python.linting.mypyArgs": [
-    "--sqlite-cache" // Use an SQLite database to store the cache. (Faster on macos)
-  ],
-  "python.linting.flake8Enabled": false,
-  // Black Formatter (the one from ms-python.python is outdated, see: https://github.com/microsoft/vscode-python/issues/18782)
-  "python.formatting.provider": "none",
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports.ruff": "explicit"
     }
   },
-  // ________ misc ________
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  "ruff.lint.args": [
+    "--extend-ignore=E203,F841,F401,RUF100,B007" // avoid too early formatting on impulsive savers
+  ],
+  "notebook.formatOnSave.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "source.fixAll.ruff": true,
+    "source.organizeImports.ruff": true
   }
 }

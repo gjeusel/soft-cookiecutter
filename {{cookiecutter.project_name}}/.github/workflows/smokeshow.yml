@@ -16,19 +16,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - run: pip install smokeshow
-
       - uses: dawidd6/action-download-artifact@v3
         with:
           workflow: ci.yml
           commit: ${{ github.event.workflow_run.head_sha }}
 
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+
       # https://smokeshow.helpmanual.io/
-      - run: smokeshow upload coverage-html
+      - run: uvx smokeshow upload coverage-html
         env:
           SMOKESHOW_GITHUB_COVERAGE_THRESHOLD: 80
           SMOKESHOW_GITHUB_STATUS_DESCRIPTION: Coverage {coverage-percentage}

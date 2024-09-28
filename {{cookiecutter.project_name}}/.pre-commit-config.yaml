@@ -16,14 +16,9 @@ repos:
         types: [python]
         language: system
         pass_filenames: false
-{% if cookiecutter.dockerfile == 'yes' %}
 
   - repo: https://github.com/astral-sh/uv-pre-commit
-    # uv version.
-    rev: 0.1.35
+    rev: 0.4.17
     hooks:
-      - id: pip-compile
-        name: pip-compile pyproject.toml
-        files: ^pyproject.toml$
-        args: [pyproject.toml, -o, requirements/requirements.txt]
-{%- endif -%}
+      - id: uv-lock
+        name: Lockfile
