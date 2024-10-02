@@ -75,6 +75,9 @@ target/
 # pyenv
 .python-version
 
+# celery beat schedule file
+celerybeat-schedule
+
 # SageMath parsed files
 *.sage.py
 
@@ -86,23 +89,38 @@ target/
 venv/
 ENV/
 
+# Spyder project settings
+.spyderproject
+.spyproject
+
 # Rope project settings
 .ropeproject
 
 # mkdocs documentation
-/site
+public/
+site/
 
 # Excel opened:
 \~\$*
 
+# ruff
+.ruff_cache/
+
 # mypy
 .mypy_cache/
+.dmypy.json
 
 # orig files
 *.orig
 
 # Macos
 *.DS_Store
-#
+
 # jupyterlab
 *.virtual_documents
+
+# pytest-profiling
+prof/
+
+# pytest-benchmark
+.benchmarks/

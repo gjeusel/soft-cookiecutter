@@ -22,7 +22,6 @@ def main():
     # Docker cleaning
     if "{{ cookiecutter.dockerfile }}" != "yes":
         remove("Dockerfile")
-        remove("requirements")
 
     # Remove licenses templates
     remove("licenses")

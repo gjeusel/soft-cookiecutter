@@ -1,0 +1,65 @@
+# Ignore Python byte-compiled files and directories
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore virtual environment directories
+venv/
+.env/
+*.venv
+*.virtualenv
+
+# Ignore build and distribution / packaging files
+build/
+dist/
+*.egg-info/
+*.egg
+sdist/
+wheel/
+.cache/
+
+# Ignore log, cache, and temporary files
+*.log
+*.tmp
+.cache/
+*.sqlite
+
+# Ignore IDE and editor configuration
+.idea/
+.vscode/
+*.swp
+*.swo
+*~ 
+
+# Ignore test-related files
+*.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+tests/
+test/
+*.pytest_cache/
+
+# Ignore deployment configuration and scripts
+*.cfg
+*.ini
+*.yml
+*.yaml
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Ignore environment specific files containing sensitive data
+.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# Documentation and examples
+docs/
+*.md
+LICENSE
+examples/
