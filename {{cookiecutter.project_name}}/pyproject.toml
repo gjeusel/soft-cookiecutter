@@ -43,7 +43,7 @@ dev = [
   #
   # code quality:
   "pre-commit==3.7.*",
-  "ruff>=0.6,<1.0",       # replacement of flake8 & associated
+  "ruff>=0.6,<1.0",    # replacement of flake8 & associated
   "mypy==1.9.*",
   #
   # confort:
@@ -70,11 +70,11 @@ all = [
   "{{ cookiecutter.project_name }}[doc]",
 ]
 
-nvim-lsp = [
-  "python-lsp-server[rope]==1.*",
-  "jedi==0.19.*",
-  "pylsp-mypy==0.6.*",
-]
+nvim-lsp = ["python-lsp-server[rope]==1.*", "jedi==0.19.*", "pylsp-mypy==0.6.*"]
+
+[tool.ruff]
+target-version = "py310"
+unsafe-fixes = true
 
 [tool.ruff.lint]
 select = [
