@@ -1,5 +1,5 @@
 # Ignore Python byte-compiled files and directories
-__pycache__/
+**/__pycache__/
 *.pyc
 *.pyo
 *.pyd
@@ -60,6 +60,15 @@ docker-compose.yml
 
 # Documentation and examples
 docs/
-*.md
 LICENSE
 examples/
+
+# CI/CD
+.github
+
+# cruft
+.cruft.json
+
+# editor tools caches
+.*_cache/
+.ropeproject/
