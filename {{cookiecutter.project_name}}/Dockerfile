@@ -1,4 +1,4 @@
-FROM ghcr.io/astral-sh/uv:0.4.10-python3.12-bookworm-slim
+FROM ghcr.io/astral-sh/uv:0.5.29-python3.12-bookworm-slim
 
 RUN apt update && apt install --no-install-recommends -y \
     git \
